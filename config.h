@@ -57,15 +57,17 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-// static const char *display_sessionizer[] = { "~/.local/bin/scripts/display-sessionizer.sh" "dmenu_run" -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11'};
-// static const char *device_manager[] = {};
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", white, "-sb", main_col, "-sf", white, NULL };
+static const char *display_sessionizer[] = { "~/.local/bin/scripts/display-sessionizer.sh" "dmenu" "-nb" black "-sf" black "-sb" main_col "-nf" main_col "-fn" dmenufont };
+static const char *device_manager[] = { "~/.local/bin/scripts/device-sessionizer.sh" "dmenu" "-nb" black "-sf" black "-sb" main_col "-nf" main_col "-fn" dmenufont };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", black, "-sb", main_col, "-sf", white, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = display_sessionizer } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = device_manager } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -77,7 +79,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-    { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2] },
+    { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -115,4 +117,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
