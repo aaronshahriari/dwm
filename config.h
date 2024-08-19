@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetbrainsMono:size=9:style=Bold" };
-static const char dmenufont[]       = "JetbrainsMono:size=9:style=Bold";
+static const char *fonts[]          = { "JetbrainsMono:size=8:style=Bold" };
+static const char dmenufont[]       = "JetbrainsMono:size=8:style=Bold";
 static const char black[]           = "#000000";
 static const char white[]           = "#FFFFFF";
 static const char light_grey[]      = "#BBBBBB";
@@ -14,7 +14,7 @@ static const char outline[]         = "#4249a6";
 static const char main_col[]        = "#67A86C";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { light_grey, black, black },
+	[SchemeNorm] = { light_grey, black, light_grey },
 	[SchemeSel]  = { black, main_col, outline },
 };
 
@@ -53,12 +53,12 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-// #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *display_sessionizer[] = { "~/.local/bin/scripts/display-sessionizer.sh", "dmenu", "-nb", black, "-sf", black, "-sb", main_col, "-nf", main_col, "-fn", dmenufont, NULL };
-static const char *device_manager[] = { "~/.local/bin/scripts/device-sessionizer.sh", "dmenu", "-nb", black, "-sf", black, "-sb", main_col, "-nf", main_col, "-fn", dmenufont, NULL };
+static const char *display_sessionizer[] = { SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") };
+static const char *device_manager[] = { SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", main_col, "-sb", black, "-sf", black, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
