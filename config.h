@@ -1,18 +1,22 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1.5;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "SourceCodeMono:size=8" };
-static const char dmenufont[]       = "SourceCodeMono:size=8";
+static const char *fonts[]          = { "SourceCodeMono:size=9" };
+static const char dmenufont[]       = "SourceCodeMono:size=9";
+static const char transparent[]     = "#00000000";
 static const char black[]           = "#000000";
+static const char white[]           = "#FFFFFF";
+static const char light_grey[]      = "#BBBBBB";
+static const char outline[]         = "#4249a6";
 static const char main_col[]        = "#67A86C";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { black, black, black },
-	[SchemeSel]  = { black, main_col,  main_col  },
+	[SchemeNorm] = { light_grey, black, transparent },
+	[SchemeSel]  = { black, main_col, outline },
 };
 
 /* tagging */
@@ -54,7 +58,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", black, "-sb", main_col, "-sf", black, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", white, "-sb", main_col, "-sf", white, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 static const Key keys[] = {
