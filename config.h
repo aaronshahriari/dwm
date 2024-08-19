@@ -12,7 +12,8 @@ static const char black[]           = "#000000";
 static const char white[]           = "#FFFFFF";
 static const char light_grey[]      = "#BBBBBB";
 static const char outline[]         = "#4249a6";
-static const char main_col[]        = "#67A86C";
+// static const char main_col[]        = "#67A86C"; /* light green */
+static const char main_col[]        = "#421975"; /* light purple */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { light_grey, black, main_col },
@@ -69,8 +70,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_x,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_v,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_comma,  setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_period, setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_s,      zoom,           {0} },
