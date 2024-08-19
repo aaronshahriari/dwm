@@ -13,7 +13,7 @@ static const char white[]           = "#FFFFFF";
 static const char light_grey[]      = "#BBBBBB";
 static const char outline[]         = "#4249a6";
 // static const char main_col[]        = "#67A86C"; /* light green */
-static const char main_col[]        = "#421975"; /* light purple */
+static const char main_col[]        = "#563085"; /* light purple */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { light_grey, black, main_col },
