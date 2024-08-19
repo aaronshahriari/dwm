@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "CaskaydiaCoveNerdFontMono:size=8:style=Bold" };
-static const char dmenufont[]       = "CaskaydiaCoveNerdFontMono:size=8:style=Bold";
+static const char *fonts[]          = { "CaskaydiaCoveNerdFontMono:size=9" };
+static const char dmenufont[]       = "CaskaydiaCoveNerdFontMono:size=9";
 static const char black[]           = "#000000";
 static const char white[]           = "#FFFFFF";
 static const char light_grey[]      = "#BBBBBB";
@@ -14,8 +14,8 @@ static const char outline[]         = "#4249a6";
 static const char main_col[]        = "#67A86C";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { light_grey, black, light_grey },
-	[SchemeSel]  = { black, main_col, outline },
+	[SchemeNorm] = { light_grey, black, main_col },
+	[SchemeSel]  = { black, main_col, white },
 };
 
 /* tagging */
@@ -72,7 +72,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_comma,  setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_period, setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_s,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -95,8 +95,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+    { MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} }, 
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {1} },
 };
 
 /* button definitions */
