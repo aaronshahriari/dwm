@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetbrainsMono:size=8:style=Bold" };
-static const char dmenufont[]       = "JetbrainsMono:size=8:style=Bold";
+static const char *fonts[]          = { "CaskaydiaCoveNerdFontMono:size=8:style=Bold" };
+static const char dmenufont[]       = "CaskaydiaCoveNerdFontMono:size=8:style=Bold";
 static const char black[]           = "#000000";
 static const char white[]           = "#FFFFFF";
 static const char light_grey[]      = "#BBBBBB";
@@ -53,12 +53,10 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/usr/bin/env", "bash", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *display_sessionizer[] = { SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") };
-static const char *device_manager[] = { SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", main_col, "-sb", black, "-sf", black, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
@@ -66,8 +64,8 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = display_sessionizer } },
-	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = device_manager } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
