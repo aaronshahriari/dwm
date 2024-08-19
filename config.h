@@ -57,8 +57,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *display_sessionizer[] = { "~/.local/bin/scripts/display-sessionizer.sh" "dmenu" "-nb" black "-sf" black "-sb" main_col "-nf" main_col "-fn" dmenufont };
-static const char *device_manager[] = { "~/.local/bin/scripts/device-sessionizer.sh" "dmenu" "-nb" black "-sf" black "-sb" main_col "-nf" main_col "-fn" dmenufont };
+static const char *display_sessionizer[] = { "~/.local/bin/scripts/display-sessionizer.sh", "dmenu", "-nb", black, "-sf", black, "-sb", main_col, "-nf", main_col, "-fn", dmenufont };
+static const char *device_manager[] = { "~/.local/bin/scripts/device-sessionizer.sh", "dmenu", "-nb", black, "-sf", black, "-sb", main_col, "-nf", main_col, "-fn", dmenufont };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", black, "-sb", main_col, "-sf", white, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
