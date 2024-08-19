@@ -5,6 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int focusonwheel       = 0;
 static const char *fonts[]          = { "CaskaydiaCoveNerdFontMono:size=9" };
 static const char dmenufont[]       = "CaskaydiaCoveNerdFontMono:size=9";
 static const char black[]           = "#000000";
