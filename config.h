@@ -11,13 +11,11 @@ static const char dmenufont[]       = "CaskaydiaCoveNerdFontMono:size=9";
 static const char black[]           = "#000000";
 static const char white[]           = "#FFFFFF";
 static const char light_grey[]      = "#BBBBBB";
-static const char outline[]         = "#4249a6";
-// static const char main_col[]        = "#67A86C"; /* light green */
-static const char main_col[]        = "#563085"; /* light purple */
+static const char main_col[]        = "#aaf0d1"; /* mint */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { light_grey, black, main_col },
-	[SchemeSel]  = { black, main_col, white },
+	[SchemeNorm] = { main_col, black, black },
+	[SchemeSel]  = { black, main_col, main_col },
 };
 
 /* tagging */
@@ -64,7 +62,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", main_col, "-nf", black, "-sb", black, "-sf", white, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", main_col, "-sb", main_col, "-sf", black, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 #include "movestack.c"
