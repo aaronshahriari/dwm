@@ -36,7 +36,7 @@ static const Rule rules[] = {
 /* window following */
 #define WFACTIVE '>'
 #define WFINACTIVE 'v'
-#define WFDEFAULT WFINACTIVE
+#define WFDEFAULT WFACTIVE
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
