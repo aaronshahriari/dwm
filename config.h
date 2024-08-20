@@ -62,7 +62,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black, "-nf", main_col, "-sb", main_col, "-sf", black, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 #include "movestack.c"
@@ -80,6 +80,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_v,             incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_comma,         setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_period,        setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_comma,         setcfact,       {.f = +0.25} },
+	{ MODKEY|ShiftMask,             XK_period,        setcfact,       {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_j,             movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,             movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_s,             zoom,           {0} },
@@ -95,8 +97,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,             tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_h,             focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_l,             focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,         tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period,        tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_h,             tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_l,             tagmon,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_bracketleft,   setborderpx,    {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_bracketright,  setborderpx,    {.i = +1 } },
 	TAGKEYS(                        XK_1,                               0)
