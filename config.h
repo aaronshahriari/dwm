@@ -71,8 +71,8 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,             spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,        spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_d,             spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") },
-	{ MODKEY|ShiftMask,             XK_e,             spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -nb black -sf black -sb main_col -nf main_col -fn dmenufont") },
+	{ MODKEY|ShiftMask,             XK_d,             spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu") },
+	{ MODKEY|ShiftMask,             XK_e,             spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu") },
     { MODKEY,                       XK_b,             togglebar,      {0} },
 	{ MODKEY,                       XK_j,             focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,             focusstack,     {.i = -1 } },
