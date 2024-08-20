@@ -217,7 +217,7 @@ static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void tile(Monitor *m);
-// static void togglebar(const Arg *arg);
+static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void togglefollow(const Arg *arg);
 static void toggletag(const Arg *arg);
