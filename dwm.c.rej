@@ -1,44 +1,56 @@
 --- dwm.c
 +++ dwm.c
-@@ -1531,6 +1534,23 @@ setlayout(const Arg *arg)
- 		drawbar(selmon);
- }
+@@ -208,6 +209,7 @@ static void setup(void);
+ static void seturgent(Client *c, int urg);
+ static void showhide(Client *c);
+ static void sigchld(int unused);
++static void sigstatusbar(const Arg *arg);
+ static void spawn(const Arg *arg);
+ static void tag(const Arg *arg);
+ static void tagmon(const Arg *arg);
+@@ -445,9 +450,34 @@ buttonpress(XEvent *e)
+ 			arg.ui = 1 << i;
+ 		} else if (ev->x < x + blw)
+ 			click = ClkLtSymbol;
+-		else if (ev->x > selmon->ww - (int)TEXTW(stext))
++		else if (ev->x > selmon->ww - statusw) {
++			x = selmon->ww - statusw;
+ 			click = ClkStatusText;
+-		else
++
++			char *text, *s, ch;
++			statussig = 0;
++			for (text = s = stext; *s && x <= ev->x; s++) {
++				if ((unsigned char)(*s) < ' ') {
++					ch = *s;
++					*s = '\0';
++					x += TEXTW(text) - lrpad;
++					*s = ch;
++					text = s + 1;
++					if (x >= ev->x)
++						break;
++					statussig = ch;
++				} else if (*s == '^') {
++					*s = '\0';
++					x += TEXTW(text) - lrpad;
++					*s = '^';
++					if (*(++s) == 'f')
++						x += atoi(++s);
++					while (*(s++) != '^');
++					text = s;
++					s--;
++				}
++			}
++		} else
+ 			click = ClkWinTitle;
+ 	} else if ((c = wintoclient(ev->window))) {
+ 		focus(c);
+@@ -822,7 +857,7 @@ drawbar(Monitor *m)
  
-+void setcfact(const Arg *arg) {
-+	float f;
-+	Client *c;
-+
-+	c = selmon->sel;
-+
-+	if(!arg || !c || !selmon->lt[selmon->sellt]->arrange)
-+		return;
-+	f = arg->f + c->cfact;
-+	if(arg->f == 0.0)
-+		f = 1.0;
-+	else if(f < 0.25 || f > 4.0)
-+		return;
-+	c->cfact = f;
-+	arrange(selmon);
-+}
-+
- /* arg > 1.0 will set mfact absolutly */
- void
- setmfact(const Arg *arg)
-@@ -1688,13 +1714,15 @@ tile(Monitor *m)
- 		mw = m->ww;
- 	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
- 		if (i < m->nmaster) {
--			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-+			h = (m->wh - my) * (c->cfact / mfacts);
- 			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), 0);
- 			my += HEIGHT(c);
-+			mfacts -= c->cfact;
- 		} else {
--			h = (m->wh - ty) / (n - i);
-+			h = (m->wh - ty) * (c->cfact / sfacts);
- 			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
- 			ty += HEIGHT(c);
-+			sfacts -= c->cfact;
- 		}
- }
+ 	/* draw status first so it can be overdrawn by tags later */
+ 	if (m == selmon) { /* status is only drawn on selected monitor */
+-		tw = m->ww - drawstatusbar(m, bh, stext);
++		tw = statusw = m->ww - drawstatusbar(m, bh, stext);
+ 	}
  
+ 	for (c = m->clients; c; c = c->next) {
