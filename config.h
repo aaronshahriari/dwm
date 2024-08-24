@@ -21,6 +21,7 @@ static const char *const autostart[] = {
 	"dwmblocks", NULL,
 	"picom", NULL,
 	"autorandr", "--load", "home-two", NULL,
+	"xinput set-prop", "'pointer:Logitech G502'", "'libinput Accel Speed'", "-0.8", NULL,
 	NULL /* terminate */
 };
 
