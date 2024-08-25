@@ -19,7 +19,7 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"dwmblocks", "&", NULL,
-	"picom", "&", NULL,
+	"picom", NULL,
 	"autorandr", "--load", "home-two", "&", NULL,
     "/home/aaronshahriari/.local/bin/scripts/autostart.sh", "&", NULL,
 	NULL /* terminate */
