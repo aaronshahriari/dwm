@@ -18,11 +18,10 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"dwmblocks", NULL,
-	"picom", NULL,
-	"autorandr", "--load", "home-two", NULL,
-    "/home/aaronshahriari/.local/bin/scripts/autostart.sh", NULL,
-	// "sh", "-c", "- xinput set-prop 'pointer:Logitech G502' 'libinput Accel Speed' -0.8", NULL,
+	"dwmblocks", "&", NULL,
+	"picom", "&", NULL,
+	"autorandr", "--load", "home-two", "&", NULL,
+    "/home/aaronshahriari/.local/bin/scripts/autostart.sh", "&", NULL,
 	NULL /* terminate */
 };
 
@@ -94,6 +93,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period,        setcfact,       {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_j,             movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,             movestack,      {.i = -1 } },
+    { MODKEY,                       XK_r,             resetlayout,    {0} },
 	{ MODKEY,                       XK_s,             zoom,           {0} },
 	{ MODKEY,                       XK_Tab,           view,           {0} },
 	{ MODKEY,                       XK_q,             killclient,     {0} },
