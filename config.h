@@ -7,14 +7,17 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 static const char *fonts[]          = { "CaskaydiaCoveNerdFont:size=9:style=bold" };
-static const char black[]           = "#000000";
-static const char white[]           = "#FFFFFF";
-static const char light_grey[]      = "#BBBBBB";
-static const char main_col[]        = "#aaf0d1"; /* mint */
+static const char unsel_bg[]        = "#121212";
+static const char unsel_fg[]        = "#bfbfbf";
+static const char unsel_border[]        = "#000000";
+static const char sel_bg[]        = "#3a3a3a";
+static const char sel_fg[]        = "#000000";
+static const char sel_border[]        = "#bfbfbf";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { main_col, black, black },
-	[SchemeSel]  = { black, main_col, main_col },
+	[SchemeNorm] = { unsel_fg, unsel_bg, unsel_border },
+	[SchemeSel]  = { sel_fg, sel_bg, sel_border },
 };
 
 static const char *const autostart[] = {
@@ -127,21 +130,21 @@ static const Key keys[] = {
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
-	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	// { ClkStatusText,        0,              Button1,        spawn,          {.v = termcmd } },
-	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
-	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
-	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
-	{ ClkStatusText,        0,              Button4,        sigstatusbar,   {.i = 4} },
-	{ ClkStatusText,        0,              Button5,        sigstatusbar,   {.i = 5} },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	/* click                          event mask      button          function        argument */
+	{ ClkLtSymbol,                    0,              Button1,        setlayout,      {0} },
+	{ ClkLtSymbol,                    0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkWinTitle,                    0,              Button2,        zoom,           {0} },
+	{ ClkStatusText,                  0,              Button1,        sigstatusbar,   {.i = 1} },
+	{ ClkStatusText,                  0,              Button2,        sigstatusbar,   {.i = 2} },
+	{ ClkStatusText,                  0,              Button3,        sigstatusbar,   {.i = 3} },
+	{ ClkStatusText,                  0,              Button4,        sigstatusbar,   {.i = 4} },
+	{ ClkStatusText,                  0,              Button5,        sigstatusbar,   {.i = 5} },
+	{ ClkStatusText,                  ShiftMask,      Button1,        sigstatusbar,   {.i = 6} },
+	{ ClkClientWin,                   MODKEY,         Button1,        movemouse,      {0} },
+	{ ClkClientWin,                   MODKEY,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,                   MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkTagBar,                      0,              Button1,        view,           {0} },
+	{ ClkTagBar,                      0,              Button3,        toggleview,     {0} },
+	{ ClkTagBar,                      MODKEY,         Button1,        tag,            {0} },
+	{ ClkTagBar,                      MODKEY,         Button3,        toggletag,      {0} },
 };
