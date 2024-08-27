@@ -30,7 +30,7 @@ static const char *const autostart[] = {
 	"dwmblocks", "&", NULL,
 	"picom", NULL,
 	"autorandr", "--load", "home-two", "&", NULL,
-    "/home/aaronshahriari/.local/bin/scripts/autostart.sh", "&", NULL,
+    "sh", "-c", "/home/aaronshahriari/.local/bin/scripts/autostart.sh &", NULL,
 	NULL /* terminate */
 };
 
@@ -80,7 +80,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", "-c", dmenumon, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 #include "movestack.c"
