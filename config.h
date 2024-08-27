@@ -7,17 +7,23 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 static const char *fonts[]          = { "CaskaydiaCoveNerdFont:size=9:style=bold" };
-static const char unsel_bg[]        = "#121212";
-static const char unsel_fg[]        = "#bfbfbf";
+static const char unsel_bg[]        = "#000000";
+static const char unsel_fg[]        = "#ffffff";
 static const char unsel_border[]        = "#000000";
-static const char sel_bg[]        = "#3a3a3a";
+static const char sel_bg[]        = "#204723";
 static const char sel_fg[]        = "#000000";
-static const char sel_border[]        = "#bfbfbf";
+static const char sel_border[]        = "#ffffff";
+static const char sel_tag[]        = "#67A86C";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { unsel_fg, unsel_bg, unsel_border },
 	[SchemeSel]  = { sel_fg, sel_bg, sel_border },
+	[SchemeStatus]  = { unsel_fg, unsel_bg, "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { sel_fg, sel_tag, "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+    [SchemeTagsNorm]  = { unsel_fg, unsel_bg, "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+    [SchemeInfoSel]  = { unsel_fg, unsel_bg, "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    [SchemeInfoNorm]  = { unsel_fg, unsel_bg, "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 static const char *const autostart[] = {
