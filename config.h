@@ -35,7 +35,7 @@ static const char *const autostart[] = {
 	"dwmblocks", "&", NULL,
 	"picom", NULL,
 	"autorandr", "--load", "home-two", "&", NULL,
-    "sh", "-c", "/home/aaronshahriari/.local/bin/scripts/autostart.sh &", NULL,
+    "sh", "-c", "~/.local/bin/scripts/autostart.sh", NULL,
 	NULL /* terminate */
 };
 
@@ -109,9 +109,9 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,             spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,        spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_d,             spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -m -c") },
-	{ MODKEY|ShiftMask,             XK_e,             spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -m -c") },
-	{ MODKEY,                       XK_g,             spawn,          SHCMD("~/.local/bin/scripts/dmenu-search.sh dmenu -m -c") },
+	{ MODKEY|ShiftMask,             XK_d,             spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c") },
+	{ MODKEY|ShiftMask,             XK_e,             spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -m 0 -c") },
+	{ MODKEY,                       XK_g,             spawn,          SHCMD("~/.local/bin/scripts/dmenu-search.sh dmenu -m 0 -c") },
     { MODKEY,			            XK_minus,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -35 $(pidof dwmblocks)") },
     { MODKEY,			            XK_equal,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -35 $(pidof dwmblocks)") },
     { MODKEY|ShiftMask,		        XK_m,             spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -35 $(pidof dwmblocks)") },
