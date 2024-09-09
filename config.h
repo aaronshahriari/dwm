@@ -11,7 +11,8 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
-static const char *fonts[]          = { "CaskaydiaCoveNerdFont:size=9:style=bold" };
+// static const char *fonts[]          = { "CaskaydiaCoveNerdFont:size=9:style=bold" };
+static const char *fonts[]          = { "MesloLGS Nerd Font:size=9" };
 static const char unsel_bg[]        = "#000000";
 static const char unsel_fg[]        = "#ffffff";
 static const char unsel_border[]        = "#000000";
@@ -32,8 +33,8 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"dwmblocks", "&", NULL,
-	"picom", NULL,
+	"dwmblocks", NULL,
+	"picom", "-b", NULL,
     "sh", "-c", "~/.local/bin/scripts/autostart.sh", NULL,
 	NULL /* terminate */
 };
@@ -113,6 +114,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_g,             spawn,          SHCMD("~/.local/bin/scripts/dmenu-search.sh dmenu -m 0 -c") },
     { MODKEY,			            XK_minus,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -35 $(pidof dwmblocks)") },
     { MODKEY,			            XK_equal,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -35 $(pidof dwmblocks)") },
+    // { MODKEY,			            XK_minus,         spawn,          SHCMD("xbacklight inc 10; notify-send xbacklight -get") },
+    // { MODKEY,			            XK_minus,         spawn,          SHCMD("xbacklight dec 10; notify-send xbacklight -get") },
     { MODKEY|ShiftMask,		        XK_m,             spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -35 $(pidof dwmblocks)") },
     { MODKEY,                       XK_b,             togglebar,      {0} },
 	{ MODKEY,                       XK_j,             focusstack,     {.i = +1 } },
