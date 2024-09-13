@@ -12,7 +12,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 // static const char *fonts[]          = { "CaskaydiaCoveNerdFont:size=9:style=bold" };
-static const char *fonts[]          = { "MesloLGS Nerd Font:size=9" };
+static const char *fonts[]          = { "MesloLGS Nerd Font:size=18" };
 static const char unsel_bg[]        = "#000000";
 static const char unsel_fg[]        = "#ffffff";
 static const char unsel_border[]        = "#000000";
