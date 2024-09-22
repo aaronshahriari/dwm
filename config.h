@@ -101,7 +101,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+// static const char *termcmd[]  = { "~/.local/bin/scripts/alacritty.sh", NULL };
 // static const char *flamecmd[]  = { "flameshot", "gui", "-c", "-p", "/home/aaronshahriari/Pictures/Screenshots/", NULL };
 
 #include "movestack.c"
@@ -109,8 +109,8 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,             spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return,        spawn,          {.v = termcmd } },
-    // { MODKEY|ShiftMask,			    XK_s,             spawn,          {.v = flamecmd } },
+	{ MODKEY,                       XK_a,             spawn,          SHCMD("~/.local/bin/scripts/audio-sessionizer.sh") },
+	{ MODKEY,                       XK_Return,        spawn,          SHCMD("~/.local/bin/scripts/alacritty.sh") },
     { MODKEY|ShiftMask,			    XK_s,             spawn,          SHCMD("~/.local/bin/scripts/flameshot-screenshot.sh") },
 	{ MODKEY|ShiftMask,             XK_d,             spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c") },
 	{ MODKEY|ShiftMask,             XK_e,             spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -m 0 -c") },
@@ -118,6 +118,8 @@ static const Key keys[] = {
     { MODKEY,			            XK_minus,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -35 $(pidof dwmblocks)") },
     { MODKEY,			            XK_equal,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -35 $(pidof dwmblocks)") },
     { MODKEY|ShiftMask,		        XK_m,             spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -35 $(pidof dwmblocks)") },
+    // { MODKEY|ShiftMask,			    XK_minus,         spawn,          SHCMD("brightnessctl set 10%-; notify-send "Brightness" "$(echo $(($(brightnessctl g) * 100 / $(brightnessctl m))))%"") },
+    // { MODKEY|ShiftMask,			    XK_equal,         spawn,          SHCMD("brightnessctl set +10%; notify-send "Brightness" "$(echo $(($(brightnessctl g) * 100 / $(brightnessctl m))))%"") },
     { MODKEY,                       XK_b,             togglebar,      {0} },
 	{ MODKEY,                       XK_j,             focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,             focusstack,     {.i = -1 } },
