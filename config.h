@@ -101,6 +101,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
+static const char *termcmd[]  = { "wezterm", NULL };
 // static const char *termcmd[]  = { "~/.local/bin/scripts/alacritty.sh", NULL };
 // static const char *flamecmd[]  = { "flameshot", "gui", "-c", "-p", "/home/aaronshahriari/Pictures/Screenshots/", NULL };
 
@@ -110,7 +111,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,             spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_a,             spawn,          SHCMD("~/.local/bin/scripts/audio-sessionizer.sh") },
-	{ MODKEY,                       XK_Return,        spawn,          SHCMD("~/.local/bin/scripts/alacritty.sh") },
+	{ MODKEY,                       XK_Return,        spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,			    XK_s,             spawn,          SHCMD("~/.local/bin/scripts/flameshot-screenshot.sh") },
 	{ MODKEY|ShiftMask,             XK_d,             spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c") },
 	{ MODKEY|ShiftMask,             XK_e,             spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -m 0 -c") },
