@@ -112,6 +112,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,             spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_a,             spawn,          SHCMD("~/.local/bin/scripts/audio-sessionizer.sh") },
 	{ MODKEY,                       XK_Return,        spawn,          {.v = termcmd } },
+    { MODKEY,			            XK_c,             spawn,          SHCMD("~/.local/bin/scripts/fix-devices.sh") },
     { MODKEY|ShiftMask,			    XK_s,             spawn,          SHCMD("~/.local/bin/scripts/flameshot-screenshot.sh") },
 	{ MODKEY|ShiftMask,             XK_d,             spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c") },
 	{ MODKEY|ShiftMask,             XK_e,             spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -m 0 -c") },
