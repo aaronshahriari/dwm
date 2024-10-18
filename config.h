@@ -122,7 +122,7 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,		        XK_m,             spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -35 $(pidof dwmblocks)") },
     { MODKEY|ShiftMask,			    XK_minus,         spawn,          SHCMD("~/.local/bin/scripts/dec_brightness.sh") },
     { MODKEY|ShiftMask,			    XK_equal,         spawn,          SHCMD("~/.local/bin/scripts/inc_brightness.sh") },
-    { MODKEY,			            XK_XF86AudioPlay, spawn,          SHCMD("playerctl play-pause") },
+    { MODKEY,			            XF86XK_AudioPlay, spawn,          SHCMD("playerctl play-pause") },
     { MODKEY,                       XK_b,             togglebar,      {0} },
 	{ MODKEY,                       XK_j,             focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,             focusstack,     {.i = -1 } },
