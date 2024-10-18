@@ -107,6 +107,7 @@ static const char *termcmd[]  = { "wezterm", NULL };
 
 #include "movestack.c"
 #include "unfloat.c"
+#include <X11/XF86keysym.h>
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,             spawn,          {.v = dmenucmd } },
