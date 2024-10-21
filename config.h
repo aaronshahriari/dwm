@@ -125,7 +125,7 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,			    XK_equal,         spawn,          SHCMD("~/.local/bin/scripts/inc_brightness.sh") },
     { MODKEY,			            XF86XK_AudioPlay, spawn,          SHCMD("playerctl play-pause") },
     { MODKEY,			            XF86XK_AudioNext, spawn,          SHCMD("playerctl next") },
-    { MODKEY|ShiftMask,			    XF86XK_AudioPrev, spawn,          SHCMD("playerctl previous") },
+    { MODKEY|ShiftMask,			    XF86XK_AudioNext, spawn,          SHCMD("playerctl previous") },
     { MODKEY,                       XK_b,             togglebar,      {0} },
 	{ MODKEY,                       XK_j,             focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,             focusstack,     {.i = -1 } },
