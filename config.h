@@ -101,7 +101,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "wezterm", NULL };
+static const char *termcmd[]  = { "ghostty", NULL };
 // static const char *termcmd[]  = { "~/.local/bin/scripts/alacritty.sh", NULL };
 // static const char *flamecmd[]  = { "flameshot", "gui", "-c", "-p", "/home/aaronshahriari/Pictures/Screenshots/", NULL };
 
