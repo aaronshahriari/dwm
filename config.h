@@ -48,7 +48,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "GNU Image Manipulation Program",     NULL,       NULL,       1 << 4,            1,           -1 },
+	{ ".gimp-2.10-wrapped_",     NULL,       NULL,       1 << 4,            1,           -1 },
 	{ "Google-chrome",     NULL,       NULL,       1 << 1,            0,           -1 },
 };
 
