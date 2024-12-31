@@ -16,7 +16,7 @@ static const char *fonts[]          = { "MesloLGS Nerd Font:size=18" };
 static const char unsel_bg[]        = "#000000";
 static const char unsel_fg[]        = "#ffffff";
 static const char unsel_border[]        = "#000000";
-static const char sel_bg[]        = "#ffffff";
+static const char sel_bg[]        = "#4287f5";
 static const char sel_fg[]        = "#000000";
 static const char sel_border[]        = "#ffffff";
 static const char sel_tag[]        = "#67A86C";
