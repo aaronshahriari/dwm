@@ -10,6 +10,7 @@ static void incrivgaps(const Arg *arg);
 static void togglegaps(const Arg *arg);
 /* Layouts (delete the ones you do not need) */
 static void bstack(Monitor *m);
+static void verticalstack(Monitor *m);
 static void bstackhoriz(Monitor *m);
 static void centeredmaster(Monitor *m);
 static void centeredfloatingmaster(Monitor *m);
@@ -235,6 +236,34 @@ bstack(Monitor *m)
 			sx += WIDTH(c) + iv;
 		}
 	}
+}
+
+void
+verticalstack(Monitor *m) {
+    unsigned int i, n;
+    int oh, ov, ih, iv;
+    int x, y, w, h;
+    float facts = 0;
+    int rest = 0;
+    Client *c;
+
+    getgaps(m, &oh, &ov, &ih, &iv, &n);
+    if (n == 0)
+        return;
+
+    x = m->wx + ov;
+    y = m->wy + oh;
+    w = m->ww - 2 * ov;
+    h = m->wh - 2 * oh - ih * (n - 1);
+
+    for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+        facts += c->cfact;
+
+    for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
+        int ch = h * (c->cfact / facts) + (i < rest ? 1 : 0);
+        resize(c, x, y, w - (2 * c->bw), ch - (2 * c->bw), 0);
+        y += ch + ih;
+    }
 }
 
 static void

@@ -74,6 +74,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 	{ "[\\]",     dwindle },
 	{ "H[]",      deck },
 	{ "TTT",      bstack },
+    { "|||",      verticalstack },
 	{ "===",      bstackhoriz },
 	{ "HHH",      grid },
 	{ "###",      nrowgrid },
