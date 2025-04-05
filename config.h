@@ -12,7 +12,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 // static const char *fonts[]          = { "CaskaydiaCoveNerdFont:size=9:style=bold" };
-static const char *fonts[]          = { "MesloLGS Nerd Font:size=18" };
+static const char *fonts[]          = { "MesloLGS Nerd Font:size=11" };
 static const char unsel_bg[]        = "#000000";
 static const char unsel_fg[]        = "#ffffff";
 static const char unsel_border[]        = "#000000";
@@ -35,7 +35,7 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
 	"dwmblocks", NULL,
 	"picom", "-b", NULL,
-    "sh", "-c", "~/.local/bin/scripts/autostart.sh", NULL,
+    "sh", "-c", "$HOME/.local/bin/scripts/autostart.sh", NULL,
 	NULL /* terminate */
 };
 
@@ -48,8 +48,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ ".gimp-2.10-wrapped_",     NULL,       NULL,       1 << 4,            0,           -1 },
-	{ "Google-chrome",     NULL,       NULL,       1 << 1,            0,           -1 },
+	{ "Gimp",     NULL,       NULL,       1 << 4,            0,           0 },
+    { "Pavucontrol",    NULL,       NULL,       0,            1,           0 },
+    { "Spotify",  NULL,       NULL,       1 << 0,       0,           1 },
+    { "1Password",  NULL,       NULL,       1 << 0,       0,           1 },
 };
 
 /* window following */
@@ -103,8 +105,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "ghostty", NULL };
-// static const char *termcmd[]  = { "~/.local/bin/scripts/alacritty.sh", NULL };
-// static const char *flamecmd[]  = { "flameshot", "gui", "-c", "-p", "/home/aaronshahriari/Pictures/Screenshots/", NULL };
+static const char *pavucontrol[]  = { "pavucontrol", NULL };
 
 #include "movestack.c"
 #include "unfloat.c"
@@ -119,20 +120,18 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_d,             spawn,          SHCMD("~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c") },
 	{ MODKEY|ShiftMask,             XK_e,             spawn,          SHCMD("~/.local/bin/scripts/device-sessionizer.sh dmenu -m 0 -c") },
 	{ MODKEY,                       XK_g,             spawn,          SHCMD("~/.local/bin/scripts/dmenu-search.sh dmenu -m 0 -c") },
-    { MODKEY,			            XK_minus,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -35 $(pidof dwmblocks)") },
-    { MODKEY,			            XK_equal,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -35 $(pidof dwmblocks)") },
+    { MODKEY,			            XK_minus,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-; kill -35 $(pidof dwmblocks)") },
+    { MODKEY,			            XK_equal,         spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+; kill -35 $(pidof dwmblocks)") },
     { MODKEY|ShiftMask,		        XK_m,             spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -35 $(pidof dwmblocks)") },
     { MODKEY|ShiftMask,			    XK_minus,         spawn,          SHCMD("~/.local/bin/scripts/dec_brightness.sh") },
     { MODKEY|ShiftMask,			    XK_equal,         spawn,          SHCMD("~/.local/bin/scripts/inc_brightness.sh") },
-    { MODKEY,			            XK_s,             spawn,          SHCMD("~/.local/bin/scripts/dmenu-app-switcher.sh") },
     { MODKEY,			            XF86XK_AudioPlay, spawn,          SHCMD("~/.local/bin/scripts/dwmblocks/music/keyboard/play-pause.sh") },
     { MODKEY,			            XF86XK_AudioNext, spawn,          SHCMD("playerctl next") },
     { MODKEY|ShiftMask,			    XF86XK_AudioNext, spawn,          SHCMD("playerctl previous") },
+    { MODKEY,                       XK_v,             spawn,          {.v = pavucontrol } },
     { MODKEY,                       XK_b,             togglebar,      {0} },
 	{ MODKEY,                       XK_j,             focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,             focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_x,             incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_v,             incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_comma,         setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_period,        setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_comma,         setcfact,       {.f = +0.25} },
