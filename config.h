@@ -48,10 +48,15 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
+
+    /*primary monitor rules*/
 	{ "Gimp",     NULL,       NULL,       1 << 4,            0,           0 },
     { "Pavucontrol",    NULL,       NULL,       0,            1,           0 },
+
+    /*secondary monitor rules*/
     { "Spotify",  NULL,       NULL,       1 << 0,       0,           1 },
     { "1Password",  NULL,       NULL,       1 << 0,       0,           1 },
+    { "obs",  NULL,       NULL,       2 << 0,       0,           1 },
 };
 
 /* window following */
